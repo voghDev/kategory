@@ -278,17 +278,17 @@ Kategory provides the following `MonadError` instances for `Option`, `Try` and `
 
 ```kotlin
 monadError<OptionHK, Unit>()
-//kategory.OptionMonadErrorInstanceImplicits$instance$1@33de4e0e
+//kategory.OptionMonadErrorInstanceImplicits$instance$1@1fecd3c1
 ```
 
 ```kotlin
 monadError<TryHK, Throwable>()
-//kategory.TryMonadErrorInstanceImplicits$instance$1@695b07e9
+//kategory.TryMonadErrorInstanceImplicits$instance$1@61ede67a
 ```
 
 ```kotlin
 monadError<EitherKindPartial<NukeException>, NukeException>()
-//kategory.EitherMonadErrorInstanceImplicits$instance$1@eff4a8a
+//kategory.EitherMonadErrorInstanceImplicits$instance$1@366ca4db
 ```
 
 Let's now rewrite our program as a polymorphic function that will work over any datatype for which a `MonadError` instance exists.
