@@ -192,14 +192,14 @@ We can now lift any value to a `EitherT<F, BizError, A>` which looks like this:
 ```kotlin
 val eitherTVal = 1.pure<EitherTKindPartial<ObservableKWHK, BizError>, Int>()
 eitherTVal
-//EitherT(value=ObservableKW(observable=io.reactivex.internal.operators.observable.ObservableJust@595de4fa))
+//EitherT(value=ObservableKW(observable=io.reactivex.internal.operators.observable.ObservableJust@126f9098))
 ```
 
 And back to the `ObservableKW<Either<BizError, A>>` running the transformer
 
 ```kotlin
 eitherTVal.value()
-//ObservableKW(observable=io.reactivex.internal.operators.observable.ObservableJust@595de4fa)
+//ObservableKW(observable=io.reactivex.internal.operators.observable.ObservableJust@126f9098)
 ```
 
 So how would our function look if we implemented it with the EitherT monad transformer?
@@ -224,7 +224,7 @@ Available Instances:
 import kategory.debug.*
 
 showInstances<EitherTKindPartial<ObservableKWHK, BizError>, BizError>()
-//[Applicative, Functor, Monad, MonadError, SemigroupK]
+//[Applicative, Foldable, Functor, Monad, MonadError, SemigroupK, Traverse, TraverseFilter]
 ```
 
 Take a look at the [`OptionT` docs]({{ '/docs/datatypes/optiont' | relative_url }}) for an alternative version of this content with the `OptionT` monad transformer

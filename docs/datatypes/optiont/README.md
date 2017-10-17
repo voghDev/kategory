@@ -170,7 +170,7 @@ We can now lift any value to a `OptionT<F, A>` which looks like this:
 ```kotlin
 val optTVal = 1.pure<OptionTKindPartial<ObservableKWHK>, Int>()
 optTVal
-//OptionT(value=ObservableKW(observable=io.reactivex.internal.operators.observable.ObservableJust@6cae43e9))
+//OptionT(value=ObservableKW(observable=io.reactivex.internal.operators.observable.ObservableJust@6e1998d))
 ```
 
 or
@@ -178,14 +178,14 @@ or
 ```kotlin
 val optTVal = OptionT.fromOption<ObservableKWHK, Int>(1.some())
 optTVal
-//OptionT(value=ObservableKW(observable=io.reactivex.internal.operators.observable.ObservableJust@3c37dcdc))
+//OptionT(value=ObservableKW(observable=io.reactivex.internal.operators.observable.ObservableJust@4fb5970d))
 ```
 
 And back to the `ObservableKW<Option<A>>` running the transformer
 
 ```kotlin
 optTVal.value()
-//ObservableKW(observable=io.reactivex.internal.operators.observable.ObservableJust@3c37dcdc)
+//ObservableKW(observable=io.reactivex.internal.operators.observable.ObservableJust@4fb5970d)
 ```
 
 So how would our function look if we implemented it with the OptionT monad transformer?
@@ -209,7 +209,7 @@ Available Instances:
 import kategory.debug.*
 
 showInstances<OptionTKindPartial<ObservableKWHK>, Unit>()
-//[Applicative, Functor, FunctorFilter, Monad, MonoidK, SemigroupK]
+//[Applicative, Foldable, Functor, FunctorFilter, Monad, MonoidK, SemigroupK, Traverse, TraverseFilter]
 ```
 
 Take a look at the [`EitherT` docs]({{ '/docs/datatypes/eithert' | relative_url }}) for an alternative version of this content with the `EitherT` monad transformer
