@@ -219,5 +219,5 @@ houseNumber
 import kategory.debug.*
 
 showInstances<ValidatedKindPartial<String>, Unit>()
-//[Applicative, ApplicativeError, Foldable, Functor, SemigroupK, Traverse, TraverseFilter]
+//[Applicative, ApplicativeError, Eq, Foldable, Functor, SemigroupK, Traverse, TraverseFilter]
 ```

@@ -170,7 +170,7 @@ We can now lift any value to a `OptionT<F, A>` which looks like this:
 ```kotlin
 val optTVal = 1.pure<OptionTKindPartial<ObservableKWHK>, Int>()
 optTVal
-//OptionT(value=ObservableKW(observable=io.reactivex.internal.operators.observable.ObservableJust@6e1998d))
+//OptionT(value=ObservableKW(observable=io.reactivex.internal.operators.observable.ObservableJust@694fe9cd))
 ```
 
 or
@@ -178,14 +178,14 @@ or
 ```kotlin
 val optTVal = OptionT.fromOption<ObservableKWHK, Int>(1.some())
 optTVal
-//OptionT(value=ObservableKW(observable=io.reactivex.internal.operators.observable.ObservableJust@4fb5970d))
+//OptionT(value=ObservableKW(observable=io.reactivex.internal.operators.observable.ObservableJust@700f6a00))
 ```
 
 And back to the `ObservableKW<Option<A>>` running the transformer
 
 ```kotlin
 optTVal.value()
-//ObservableKW(observable=io.reactivex.internal.operators.observable.ObservableJust@4fb5970d)
+//ObservableKW(observable=io.reactivex.internal.operators.observable.ObservableJust@700f6a00)
 ```
 
 So how would our function look if we implemented it with the OptionT monad transformer?

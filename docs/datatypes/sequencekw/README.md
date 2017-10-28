@@ -14,7 +14,7 @@ It can be created from Kotlin Sequence type with a convenient `k()` function.
 import kategory.*
 
 sequenceOf(1, 2, 3).k()
-//SequenceKW(sequence=kotlin.collections.ArraysKt___ArraysKt$asSequence$$inlined$Sequence$1@50c0c465)
+//SequenceKW(sequence=kotlin.collections.ArraysKt___ArraysKt$asSequence$$inlined$Sequence$1@1c59e897)
 ```
 
 SequenceKW derives many useful typeclasses. For instance, it has a [`SemigroupK`](/docs/typeclasses/semigroupk/) instance.

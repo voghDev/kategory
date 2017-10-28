@@ -226,3 +226,12 @@ val x = "hello".left()
 x.getOrElse { 7 }
 //7
 ```
+
+## Instances
+
+```kotlin
+import kategory.debug.*
+
+showInstances<EitherHK, Throwable>()
+//[Applicative, Foldable, Functor, Monad, MonadError, SemigroupK, Traverse, TraverseFilter]
+```

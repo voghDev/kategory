@@ -68,7 +68,7 @@ val lifted: (NetworkResult) -> NetworkResult = networkSuccessPrism.lift { succes
         success.copy(content = "different content")
 }
 lifted(NetworkResult.Failure)
-//Line_1$NetworkResult$Failure@18d8f46
+//Line_1$NetworkResult$Failure@7465318
 ```
 
 We can also modify or lift functions using `Functors`
@@ -163,5 +163,7 @@ liftSuccess(Try.Failure<Int>(ArithmeticException("/ by zero")))
 
 ### Laws
 
-Kategory provides [`PrismLaws`](/docs/optics/laws#prismlaws) in the form of test cases for internal verification of lawful instances and third party apps creating their own prisms.
+Kategory provides [`PrismLaws`][prism_laws_source]{:target="_blank"} in the form of test cases for internal verification of lawful instances and third party apps creating their own prisms.
+
+[prism_laws_source]: https://github.com/kategory/kategory/blob/master/kategory-test/src/main/kotlin/kategory/laws/PrismLaws.kt
 

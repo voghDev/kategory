@@ -75,7 +75,7 @@ odd(100000).value()
 import kategory.debug.*
 
 showInstances<EvalHK, Unit>()
-//[Applicative, Functor, Monad]
+//[Applicative, Bimonad, Comonad, Functor, Monad]
 ```
  
 # Credits
