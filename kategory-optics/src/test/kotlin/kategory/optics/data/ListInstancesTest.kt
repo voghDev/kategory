@@ -4,8 +4,6 @@ import io.kotlintest.KTestJUnitRunner
 import io.kotlintest.properties.Gen
 import kategory.Eq
 import kategory.IsoLaws
-import kategory.ListKWMonadCombineInstance
-import kategory.ListKWMonoidInstanceImplicits
 import kategory.NonEmptyListSemigroupInstanceImplicits
 import kategory.OptionMonoidInstanceImplicits
 import kategory.OptionalLaws
@@ -13,7 +11,6 @@ import kategory.UnitSpec
 import kategory.genFunctionAToB
 import kategory.genNonEmptyList
 import kategory.genOption
-import kategory.isos
 import kategory.k
 import org.junit.runner.RunWith
 
@@ -58,8 +55,7 @@ class ListInstancesTest : UnitSpec() {
                 bGen = Gen.create { Gen.list(Gen.int()).generate().k() },
                 funcGen = genFunctionAToB(Gen.create { Gen.list(Gen.int()).generate().k() }),
                 EQA = Eq.any(),
-                EQB = Eq.any(),
-                bMonoid = ListKWMonoidInstanceImplicits.instance()
+                EQB = Eq.any()
         ))
 
     }
