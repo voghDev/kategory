@@ -33,6 +33,11 @@ listOf("K", "Λ", "T", "E", "G", "O", "R", "Y").combineAll()
 //KΛTEGORY
 ```
 
+```kotlin
+listOf<Option<Int>>(Some(1), Some(1)).combineAll()
+//Some(value=2)
+```
+
 The advantage of using these type class provided methods, rather than the specific ones for each type, is that we can compose monoids to allow us to operate on more complex types, e.g.
 
 This is also true if we define our own instances. As an example, let's use `Foldable`'s `foldMap`, which maps over values accumulating the results, using the available `Monoid` for the type mapped onto.
@@ -61,7 +66,7 @@ To use this with a function that produces a tuple, we can define a Monoid for a 
 fun <A, B> monoidTuple(MA: Monoid<A>, MB: Monoid<B>): Monoid<Tuple2<A, B>> =
   object: Monoid<Tuple2<A, B>> {
     override fun combine(x: Tuple2<A, B>, y: Tuple2<A, B>): Tuple2<A, B> {
-      println("monoitTuple#combine receiving ---> x: $x, y: $y")
+      println("monoidTuple#combine receiving ---> x: $x, y: $y")
       val (xa, xb) = x
       val (ya, yb) = y
       return Tuple2(MA.combine(xa, ya), MB.combine(xb, yb))

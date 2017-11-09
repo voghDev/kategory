@@ -124,7 +124,7 @@ When using `Option` our previous example may look like:
 
 ```kotlin:ank
 import kategory.*
-import kategory.Option.*
+
 
 fun arm(): Option<Nuke> = None
 fun aim(): Option<Target> = None
@@ -240,7 +240,7 @@ s possible states.
 Once we have an ADT defined to model our known errors we can redefine our functions.
 
 ```kotlin:ank
-import kategory.Either.*
+
 
 fun arm(): Either<SystemOffline, Nuke> = Right(Nuke)
 fun aim(): Either<RotationNeedsOil, Target> = Right(Target)
@@ -278,17 +278,17 @@ Kategory provides the following `MonadError` instances for `Option`, `Try` and `
 
 ```kotlin
 monadError<OptionHK, Unit>()
-//kategory.OptionMonadErrorInstanceImplicits$instance$1@62a0699d
+//kategory.OptionMonadErrorInstanceImplicits$instance$1@763c4fd5
 ```
 
 ```kotlin
 monadError<TryHK, Throwable>()
-//kategory.TryMonadErrorInstanceImplicits$instance$1@6ca0fece
+//kategory.TryMonadErrorInstanceImplicits$instance$1@45b0184e
 ```
 
 ```kotlin
 monadError<EitherKindPartial<NukeException>, NukeException>()
-//kategory.EitherMonadErrorInstanceImplicits$instance$1@13bdc665
+//kategory.EitherMonadErrorInstanceImplicits$instance$1@68b82b07
 ```
 
 Let's now rewrite our program as a polymorphic function that will work over any datatype for which a `MonadError` instance exists.

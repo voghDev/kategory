@@ -47,27 +47,10 @@ Option.monoid<Int>().combine(Option(1), Option(2))
 ```
 
 ```kotlin
-Option.monoid<Int>().combine(Option(1), Option.None)
+Option.monoid<Int>().combine(Option(1), None)
 //None
 ```
 
 Many of these types have methods defined directly on them, which allow for such combining, e.g. `+` on `List`, but the value of having a `Semigroup` typeclass available is that these compose.
-
-There is also extension syntax available for Semigroup.
-
-```kotlin
-listOf(Option(1), Option(2)).combineAll(Option.semigroup<Int>())
-//Some(value=3)
-```
-
-```kotlin
-listOf(1, 2, 3).combineAll()
-//6
-```
-
-```kotlin
-listOf("K", "Λ", "T", "E", "G", "O", "R", "Y").combineAll()
-//KΛTEGORY
-```
 
 Contents partially adapted from [Scala Exercises Cat's Semigroup Tutorial](https://www.scala-exercises.org/cats/semigroup)

@@ -23,8 +23,6 @@ So let's test this out with an example:
 
 ```kotlin:ank
 import kategory.*
-import kategory.Either.*
-import kategory.Option.*
 
 data class Country(val code: String)
 data class Address(val id: Int, val country: Option<Country>)
@@ -192,14 +190,14 @@ We can now lift any value to a `EitherT<F, BizError, A>` which looks like this:
 ```kotlin
 val eitherTVal = 1.pure<EitherTKindPartial<ObservableKWHK, BizError>, Int>()
 eitherTVal
-//EitherT(value=ObservableKW(observable=io.reactivex.internal.operators.observable.ObservableJust@26f8a3a3))
+//EitherT(value=ObservableKW(observable=io.reactivex.internal.operators.observable.ObservableJust@5655e036))
 ```
 
 And back to the `ObservableKW<Either<BizError, A>>` running the transformer
 
 ```kotlin
 eitherTVal.value()
-//ObservableKW(observable=io.reactivex.internal.operators.observable.ObservableJust@26f8a3a3)
+//ObservableKW(observable=io.reactivex.internal.operators.observable.ObservableJust@5655e036)
 ```
 
 So how would our function look if we implemented it with the EitherT monad transformer?
