@@ -1,10 +1,10 @@
 ---
 layout: docs
-title: Invariant functors
-permalink: /docs/patterns/invariant_functors/
+title: Invariant functor
+permalink: /docs/datatypes/invariant_functor/
 ---
 
-## Invariant and contravariant functors
+## Invariant functor
 
 InvariantFunctor, also known as the exponential functor is a `Functor` typeclass that has a method called `xmap`, which must meet the following:
 
@@ -37,23 +37,22 @@ Contravariant         Contravariant functor
 
 Let's see an example through a simple hierarchy:
 
-```
-@typeclass trait InvariantFunctor[F[_]] {
-    def xmap[A, B](fa: F[A], f: A => B, g: B => A): F[B]
+```kotlin
+interface InvariantFunctor<F> {
+    fun <A, B> xmap(fa: () -> F, f: () -> B, g: () -> A) : B
     ...
 }
 
-@typeclass trait Functor[F[_]] extends InvariantFunctor[F] {
-    def map[A, B](fa: F[A])(f: A => B): F[B]
-    def xmap[A, B](fa: F[A], f: A => B, g: B => A): F[B] = map(fa)(f)
-    ...
+interface Functor<F> : InvariantFunctor<F> {
+    fun <A, B> map(fa: () -> F, f: () -> B, g: () -> A): B
+    override fun <A, B> xmap(fa: () -> F, f: () -> B): B = map(fa, f, _)
 }
 
-@typeclass trait Contravariant[F[_]] extends InvariantFunctor[F] {
-    def contramap[A, B](fa: F[A])(f: B => A): F[B]
-    def xmap[A, B](fa: F[A], f: A => B, g: B => A): F[B] = contramap(fa)(f)
-    ...
+interface ContravariantFunctor<F> : InvariantFunctor<F> {
+    fun <A, B> contramap(fa: () -> F, f: () -> B, g: () -> A): B
+    override fun <A, B> xmap(fa: () -> F, g: () -> A): B = contramap(fa, _, g)
 }
+
 ```
 
 `Functor` implements `xmap` with its method `map` and ignores the function from B to A (called `g` in this case).
